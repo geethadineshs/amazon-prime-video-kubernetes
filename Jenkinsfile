@@ -5,7 +5,7 @@ pipeline{
         nodejs 'node17'
     }
     environment {
-        SCANNER_HOME=tool 'Sonar-scanner'
+        SCANNER_HOME=tool 'sonar-scanner'
     }
     stages {
         stage('clean workspace'){
@@ -21,7 +21,7 @@ pipeline{
         stage("Sonarqube Analysis "){
             steps{
                 withSonarQubeEnv('SonarQube') {
-                    sh ''' $SCANNER_HOME/bin/Sonar-scanner -Dsonar.projectName=amazon-prime-video \
+                    sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=amazon-prime-video \
                     -Dsonar.projectKey=amazon-prime-video '''
                 }
             }
